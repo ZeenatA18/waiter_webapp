@@ -329,6 +329,10 @@ ul {list-style-type: none;}
   }
 }
 
+.link{
+  color: white;
+}
+
 @media screen and (max-width: 300px) {
   span.psw {
      display: block;

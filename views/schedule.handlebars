@@ -11,20 +11,7 @@
 
 <body>
 
-  {{!-- <nav class="navbar">
-    <ul>
-      <li><a href="/waiters/:uname">Home</a></li>
-    </ul>
-  </nav> --}}
-
   <form action="/days" method="post"></form>
-
-  {{!-- <div class="month">
-    <ul>
-
-      <li>September<br><span style="font-size:18px">2022</span></li>
-    </ul>
-  </div> --}}
 
   <ul class="weekdays">
     <li>Monday</li>
@@ -73,14 +60,15 @@
       {{/each}}
     </li>
 
-
-    {{!-- <li><span class="active"> </span></li> --}}
-
   </ul>
 
-  <form action="/logout" method="post">
-    <button type="submit" style="margin-left: 25% ;">Logout</button>
-  </form>
+    <button type="submit" style="margin-left: 25% ;"> <a href="/" class="link"> Logout </a>  </button>
+
+    <button type="submit" style="margin-left: 25% ;"> <a href="/resets" class="link"> Clear </a>  </button>
+ 
+  {{#if messages.sukuna}}
+    <div class="codeMsg">{{messages.sukuna}}</div>
+    {{/if}}
 
 </body>
 

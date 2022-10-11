@@ -11,20 +11,9 @@
 </head>
 
 <body>
-
-    {{!-- <div class="message"> --}}
-        {{!-- {{#each waiterName}} --}}
-        {{!-- <h1> Hello, {{name}} </h1> --}}
-        {{!-- {{waiters}}</h1> --}}
-        {{!-- {{/each}} --}}
-        {{!-- </div> --}}
-
-
     <div class="dvd">
-
-        {{!-- <h1 style="text-align: center;">Hello,</h1> --}}
         <h2 style="text-align: center;">Select three days you available:</h2>
-        <form action="/waiters/{{uname}}" method="post">
+        <form action="/waiters/{{uname}}" method="post" id="myform">
 
             <div class="wdays">
 
@@ -96,31 +85,23 @@
         <button type="submit" style="width: 50%; margin-left:25%; border-radius: 20%;">Schedule</button>
     </form>
  </div>
+ 
+<script>
+$('#myform').validate({
+    rules: {
+        weekdays: {
+            required: true,
+            minlength: 3
+        }
+    },
+    messages: {
+        weekdays: {
+            minlength: "check at least {0}"
+        }
+    }
+});
+</script>
+
 </body>
 
 </html>
-
-
-
-
-{{!--
-<input type="checkbox" id="" name="weekdays" value="Monday">
-<label for=""> Monday </label><br>
-
-<input type="checkbox" id="" name="weekdays" value="Tuesday">
-<label for=""> Tuesday </label><br>
-
-<input type="checkbox" id="" name="weekdays" value="Wednesday">
-<label for=""> Wednesday </label><br>
-
-<input type="checkbox" id="" name="weekdays" value="Thursday">
-<label for=""> Thursday </label><br>
-
-<input type="checkbox" id="" name="weekdays" value="Friday">
-<label for=""> Friday </label><br>
-
-<input type="checkbox" id="" name="weekdays" value="Saterday">
-<label for=""> Saterday </label><br>
-
-<input type="checkbox" id="" name="weekdays" value="Sunday">
-<label for=""> Sunday </label><br><br> --}}

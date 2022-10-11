@@ -77,7 +77,13 @@ app.post('/login', async function (req, res) {
     // console.log(username)
     var name = username.waiters
 
-    res.redirect(`waiters/${name}`)
+    if(!username){
+        req.flash('sukuna', 'Please register first')
+    }else{
+
+        res.redirect(`waiters/${name}`)
+    }
+
 
 })
 
@@ -109,8 +115,6 @@ app.post('/waiters/:uname', async function (req, res) {
 })
 
 app.post('/schedule/', async function (req, res) {
-    // let username = req.params.uname
-    // let available_days = req.params.weekdays
 
  let monday = await waiterSchedule.getUserForDay("Monday")
  let tuesday = await waiterSchedule.getUserForDay("Tuesday")
@@ -134,12 +138,13 @@ app.post('/schedule/', async function (req, res) {
     })
 })
 
-app.post('/logout', async function (req, res) {
+app.get('/resets', async function (req, res) {
 
+await waiterSchedule.reset()
 
-    res.render('index', {
+req.flash('sukuna','You have cleared your schedule')
 
-    })
+    res.render('schedule')
 })
 
 

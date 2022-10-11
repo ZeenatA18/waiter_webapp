@@ -24,7 +24,6 @@
     <div id="idcoffee" class="coffee">
 
         <form class="modal-content animate" action="/login" method="post">
-            {{!-- /action_page.php --}}
 
             <h1 style="text-align: center;">LOGIN</h1>
             <div class="userImg">
@@ -32,8 +31,6 @@
             </div>
 
             <div class="maincontainer">
-
-                {{!-- {{#if messages.error}}<div class="errorMsg">{{messages.error}}</div>{{/if}} --}}
 
                 <div class="container">
 
@@ -76,11 +73,9 @@
     </form>
 
     <script>
-        // Get the modal
         var register = document.getElementById('id_register');
         var modal = document.getElementById('idcoffee');
 
-        // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
             if (event.target == register) {
                 register.style.display = "none";

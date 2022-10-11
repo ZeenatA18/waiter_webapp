@@ -11,7 +11,6 @@ CREATE TABLE waiters_key(
     password VARCHAR(10) NOT NULL
 );
 
-
 CREATE TABLE schedule(
     id SERIAL NOT NULL PRIMARY KEY,
     waiters_id integer not null,

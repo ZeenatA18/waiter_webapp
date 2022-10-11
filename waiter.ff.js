@@ -28,7 +28,7 @@ module.exports = function Waiter(db) {
     }
 
     async function reset() {
-        let db_results = await db.none('delete from waiters_key')
+        let db_results = await db.none('truncate schedule')
         return db_results
     }
 
