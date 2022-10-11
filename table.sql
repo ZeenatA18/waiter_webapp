@@ -1,4 +1,4 @@
-database => coffee_shop
+-- database => coffee_shop
 
 CREATE TABLE weekday_key(
     id SERIAL NOT NULL PRIMARY KEY,
