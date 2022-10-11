@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Waiter</title>
+</head>
+
+<body>
+    <h1 class="title" style="margin-top: 20%; color: white;">ZEE Coffee Shop</h1>
+
+    {{#if messages.sukuna}}
+    <div class="codeMsg">{{messages.sukuna}}</div>
+    {{/if}}
+
+    <div class="loginbtn">
+        <button onclick="document.getElementById('id_register').style.display='block' ">Register</button>
+        <button onclick="document.getElementById('idcoffee').style.display='block' ">Login</button>
+    </div>
+
+    <div id="idcoffee" class="coffee">
+
+        <form class="modal-content animate" action="/login" method="post">
+            {{!-- /action_page.php --}}
+
+            <h1 style="text-align: center;">LOGIN</h1>
+            <div class="userImg">
+                <img src="css/coffee cup.png" alt="">
+            </div>
+
+            <div class="maincontainer">
+
+                {{!-- {{#if messages.error}}<div class="errorMsg">{{messages.error}}</div>{{/if}} --}}
+
+                <div class="container">
+
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+
+                    <div>
+                        <label for="psw"><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password" name="psw" required>
+                    </div>
+
+                    <button type="submit" style="margin-left: 25%;"> Login </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+
+    </div>
+
+    <form action="/register" method="post">
+
+        <div class="register container animate" id="id_register">
+
+            <h1 style="text-align: center;">Register</h1>
+
+              <div class="userImg">
+                <img src="css/coffee cup.png" alt="">
+            </div>
+
+            <label for="uname"><b>Firstname</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+
+            <button type="submit" style="margin-left: 25%;"> Register </button>
+
+        </div>
+
+    </form>
+
+    <script>
+        // Get the modal
+        var register = document.getElementById('id_register');
+        var modal = document.getElementById('idcoffee');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == register) {
+                register.style.display = "none";
+            } else if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

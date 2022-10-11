@@ -1,0 +1,340 @@
+body{
+  /* background-color: rgb(168, 228, 230); */
+  background-image: url(good.jpg);
+}
+
+.title{
+  text-align: center;
+}
+
+.loginbtn{
+  text-align: center;
+  margin-top: 2%;
+}
+
+.userimg{
+  /* border-radius: 500px; */
+  text-align: center;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #40b78c;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 20%;
+}
+
+.container {
+  padding: 16px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* The Modal (background) */
+.coffee {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 10px;
+}
+
+.register{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  overflow: auto;
+  padding-top: 10px;
+  background-color: #fefefe;
+  border-radius: 50px 50px;
+  margin: 10% 25% 60% 25%; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+  /* height: 50%; */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  border-radius: 50px 50px;
+  margin: 3% auto 3% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+}
+
+.codeMsg{
+  text-align: center;
+  color: green;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.navbar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff80;
+  position: sticky;
+  top: 0;
+}
+
+.navbar ul{
+  display: flex;
+  list-style: none;
+  margin: 20px 0px;
+}
+
+.navbar ul li{
+  font-family: century;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.navbar ul li a{
+  text-decoration: none;
+  color: white;
+  padding: 8px 25px;
+  transition: all .5s ease;
+}
+
+.navbar ul li a:hover{
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 10px white;
+}
+
+.dvd{
+  /* display: none; Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: #8dadbe;
+  border-radius: 50px 50px;
+  margin: 11% 25% 50% 25%; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 50%;
+  height: 70%;
+  box-shadow: 0 0 30px black;
+}
+
+.wdays{
+  /* text-align: center; */
+  margin-left: 0%;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+ul {list-style-type: none;}
+
+/* Month header */
+.month {
+  margin-top: 50px;
+  padding: 70px 25px;
+  /* width: 100%; */
+  background: #1b918b;
+  text-align: center;
+}
+
+/* Month list */
+.month ul {
+  margin: 0;
+  padding: 0;
+}
+
+.month ul li {
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* Weekdays (Mon-Sun) */
+.weekdays {
+  margin: 0;
+  padding: 10px 0;
+  background-color:#ddd;
+ 
+}
+
+.weekdays li {
+  display: inline-block;
+  width: 13.6%;
+  color: rgb(40, 144, 121);
+  text-align: center;
+}
+
+.days {
+  padding: 10px 1px 5px 15px;
+  background: #eee;
+  margin: 0;
+}
+
+.days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 13.6%;
+  height: 20%;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size:12px;
+  color: #777;
+  border: 1px solid rgb(0, 0, 0);
+  border-collapse: collapse;
+  margin: 0.5px;
+}
+
+/* Highlight the "current" day */
+.days li .active {
+  padding: 5px;
+  background: #1abc9c;
+  color: white !important
+}
+
+.checkbox-animate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 50%;
+  height: 50vh; */
+  font-family: arial;
+  font-size: 15px;
+}
+.checkbox-animate label {
+  position: relative;
+  cursor: pointer;
+}
+.checkbox-animate label input {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.input-check {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 2px solid #ccc;
+  position: relative;
+  top: 6px;
+  margin-right: 7px;
+  transition: 0.4s;
+}
+
+.input-check::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 3px;
+  border-bottom: 4px solid #fff;
+  border-left: 4px solid #fff;
+  transform: scale(0) rotate(-45deg);
+  position: absolute;
+  top: 6px;
+  left: 4px;
+  transition: 0.4s;
+}
+
+.checkbox-animate label input:checked ~ .input-check {
+  background-color: #06b1c5;
+  border-color: #06b1c5;
+  animation-name: input-animate;
+  animation-duration: 0.7s;
+}
+
+.checkbox-animate label input:checked ~ .input-check::before {
+  transform: scale(1) rotate(-45deg);
+  animation-name: input-check;
+  animation-duration: 0.2s;
+  animation-delay: 0.3s;
+}
+
+@keyframes input-animate {
+  0% {
+      transform: scale(1);
+  }
+  40%{
+      transform: scale(1.3,0.7);
+  }
+  55% {
+      transform: scale(1);
+  }
+  70% {
+      transform: scale(1.2,0.8);
+  }
+  80% {
+      transform: scale(1);
+  }
+  90% {
+      transform: scale(1.1,0.9);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+@keyframes input-check {
+  0% {
+      transform: scale(0) rotate(-45deg);
+  }
+  100% {
+      transform: scale(1) rotate(-45deg);
+  }
+}
+
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
