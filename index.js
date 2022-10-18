@@ -124,7 +124,7 @@ app.get('/waiters/:uname', async function (req, res) {
     let user = await waiterSchedule.getUserId(username)
     // console.log("uygf",user)
     let checked = await waiterSchedule.checkedDays(user.id)
-    console.log(checked);
+    // console.log(checked);
 
     res.render('days', {
         uname: username,
@@ -165,7 +165,7 @@ app.get('/days', async function (req, res) {
     let sunday = await waiterSchedule.getUserForDay("Sunday")
 
     let color = await waiterSchedule.colorChange()
-    console.log(color);
+    // console.log(color);
     res.render('schedule', {
         monday,
         tuesday,
