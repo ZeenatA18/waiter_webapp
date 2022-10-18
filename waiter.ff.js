@@ -1,7 +1,7 @@
 module.exports = function Waiter(db) {
 
-    async function getUserId(user){
-        let users = await db.oneOrNone("SELECT * FROM waiters_key WHERE waiters = $1",[user])
+    async function getUserId(user) {
+        let users = await db.oneOrNone("SELECT * FROM waiters_key WHERE waiters = $1", [user])
         return users
     }
 
@@ -70,40 +70,43 @@ module.exports = function Waiter(db) {
     }
 
     async function checkedDays(waiter) {
-        let userDays = await db.manyOrNone('SELECT weekday_key.weekdays FROM schedule JOIN weekday_key ON schedule.weekday_id = weekday_key.id WHERE waiters_id = $1',[waiter])
+        let userDays = await db.manyOrNone('SELECT weekday_key.weekdays FROM schedule JOIN weekday_key ON schedule.weekday_id = weekday_key.id WHERE waiters_id = $1', [waiter])
         userDays = userDays.map(obj => obj.weekdays)
 
         let days = await db.manyOrNone('SELECT * from weekday_key')
         days = days.map(obj => obj.weekdays)
-        
+
         let checked = []
 
-        for (let i = 0; i<days.length; i++) {
-           checked.push(userDays.includes(days[i]))
+        for (let i = 0; i < days.length; i++) {
+            checked.push(userDays.includes(days[i]))
         }
-
+ 
         return checked
 
     }
 
-    async function colorChange(){
+    async function colorChange() {
         let days = await db.manyOrNone('SELECT * from weekday_key')
 
-        
-        for (let weekday of days) {
-            
-            let use = await db.manyOrNone('SELECT count(*) FROM schedule WHERE weekday_id = $1',[weekday.id] )
-let uses = use.count
 
-            if(uses >= 2) {
-            // adding the danger class will make the text red
-            weekday.color = "danger";
-          }
-          else if (uses >= 1) {
-            weekday.color = "warning";
-          }
+        for (let weekday of days) {
+
+            let use = await db.manyOrNone('SELECT count(*) FROM schedule WHERE weekday_id = $1', [weekday.id])
+            let uses = use[0].count
+
+            if (uses > 3 ) {
+                // adding the danger class will make the text red
+                weekday.color = "danger";
+            }
+            else if (uses == 3) {
+                weekday.color = "good";
+            }else if (uses < 3 ){
+                weekday.color = "warning"
+            }
         }
-    
+        return days;
+
 
     }
 

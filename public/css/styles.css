@@ -228,6 +228,8 @@ ul {
 .weekdays {
   margin: 0;
   padding: 10px 0;
+  width: 97%;
+  margin-left: 20px;
   background-color: #ddd;
 
 }
@@ -235,8 +237,13 @@ ul {
 .weekdays li {
   display: inline-block;
   width: 13.6%;
-  color: rgb(40, 144, 121);
+  color: rgb(0, 0, 0);
   text-align: center;
+  margin-left: 5px;
+}
+
+.schedule_content{
+  margin-top: 200px;
 }
 
 .days {
@@ -378,13 +385,19 @@ ul {
 
 .warning {
   background-color: orange;
-  color: orange;
+  /* color: orange; */
   font-weight: bold;
 }
 
 .danger {
   background-color: crimson;
-  color: crimson;
+  /* color: crimson; */
+  font-weight: bold;
+}
+
+.good {
+  background-color: green;
+  /* color: green; */
   font-weight: bold;
 }
 

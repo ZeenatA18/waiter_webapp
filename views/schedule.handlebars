@@ -11,20 +11,18 @@
 
 <body>
 
-  <form action="/days" method="post"></form>
+  <form action="/days" method="post">
+<div class="schedule_content">
+
 
   <ul class="weekdays">
-    <li class="{{color}}">Monday</li>
-    <li>Tuesday</li>
-    <li>Wednesday</li>
-    <li>Thursday</li>
-    <li>Friday</li>
-    <li>Saterday</li>
-    <li>Sunday</li>
+{{#each color}}
+  <li class="{{color}}">{{weekdays}}</li>
+{{/each}}
   </ul>
 
   <ul class="days">
-    <li id="addColor">
+    <li style="margin: ;">
       {{#each monday}}
       <br> {{waiters}} <br>
       {{/each}}
@@ -61,8 +59,8 @@
     </li>
 
   </ul>
-
-  <button type="submit" style="margin-left: 25% ;"> <a href="/" class="link"> Logout </a> </button>
+</form>
+  <button type="submit" style="margin-left: 25% ;"> <a href="/logout" class="link"> Logout </a> </button>
 
   <button type="submit" style="margin-left: 25% ;"> <a href="/resets" class="link"> Clear </a> </button>
 
@@ -70,6 +68,7 @@
   <div class="codeMsg">{{messages.sukuna}}</div>
   {{/if}}
 
+</div>
   <script>
 
     setTimeout(function () {

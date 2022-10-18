@@ -50,7 +50,7 @@ app.use(flash());
 app.get('/', async function (req, res) {
 
     res.render('index', {
-codex:req.session.codex
+        codex: req.session.codex
     })
 })
 
@@ -59,16 +59,16 @@ app.post('/register', async function (req, res) {
     let alphabet = /^[a-z A-Z]+$/
     let results = await waiterSchedule.duplicate(user)
 
- 
-    if (results.length !== 0){
-        req.flash('sukuna', 'Username already exists');
+
+    if (results.length !== 0) {
+        req.flash('sukuna', `${user}, Username already exists`);
     }
-    else if(alphabet.test(user) == false){
+    else if (alphabet.test(user) == false) {
         req.flash('sukuna', 'Please use Alphabets only')
     }
 
 
-   else if (results.length === 0) {
+    else if (results.length === 0) {
         let password = uid();
         req.flash('sukuna', "Hi, here is you code to login__" + password)
         await waiterSchedule.storedNames(user, password)
@@ -82,19 +82,22 @@ app.post('/register', async function (req, res) {
 
 app.post('/login', async function (req, res) {
     let user = req.body.uname
-let code = req.body.psw
-console.log(code);
-var username = await waiterSchedule.greet(user)
-var codex = await waiterSchedule.code(code)
-console.log(codex);
+    let code = req.body.psw
+    console.log(code);
+    var username = await waiterSchedule.greet(user)
+    var codex = await waiterSchedule.code(code)
+    console.log(codex);
     // console.log(username)
     var name = username.waiters
 
-    if(!username){
+    if (!username) {
         req.flash('sukuna', 'Please register first')
-    }else if (username, codex){
-req.session.codex = codex
+    } else if (username, codex) {
+        req.session.codex = codex
         res.redirect(`waiters/${name}`)
+    }else{
+        req.flash('sukuna', 'Please check if you typed the correct Username or Code')
+        res.redirect('/')
     }
 
 
@@ -107,7 +110,7 @@ app.post('/login_admin', async function (req, res) {
     // console.log(username)
     // var name = username.waiters
 
-    if(!username){
+    if (!username) {
         req.flash('sukuna', 'Please register first')
     }
 
@@ -135,12 +138,12 @@ app.post('/waiters/:uname', async function (req, res) {
     let username = req.params.uname
     // console.log(available_days)
 
-// if()
+    // if()
 
-       if(available_days && username){
-    await waiterSchedule.schedule(username, available_days)
-    req.flash('success', "Your available days has been saved.")
-       }
+    if (available_days && username) {
+        await waiterSchedule.schedule(username, available_days)
+        req.flash('success', "Your available days has been saved.")
+    }
 
 
     res.render('days', {
@@ -153,16 +156,16 @@ app.get('/days', async function (req, res) {
 
 
 
- let monday = await waiterSchedule.getUserForDay("Monday")
- let tuesday = await waiterSchedule.getUserForDay("Tuesday")
- let wednesday = await waiterSchedule.getUserForDay("Wednesday")
- let thursday = await waiterSchedule.getUserForDay("Thursday")
- let friday = await waiterSchedule.getUserForDay("Friday")
- let saterday = await waiterSchedule.getUserForDay("Saterday")
- let sunday = await waiterSchedule.getUserForDay("Sunday")
+    let monday = await waiterSchedule.getUserForDay("Monday")
+    let tuesday = await waiterSchedule.getUserForDay("Tuesday")
+    let wednesday = await waiterSchedule.getUserForDay("Wednesday")
+    let thursday = await waiterSchedule.getUserForDay("Thursday")
+    let friday = await waiterSchedule.getUserForDay("Friday")
+    let saterday = await waiterSchedule.getUserForDay("Saterday")
+    let sunday = await waiterSchedule.getUserForDay("Sunday")
 
-await waiterSchedule.colorChange()
- 
+    let color = await waiterSchedule.colorChange()
+    console.log(color);
     res.render('schedule', {
         monday,
         tuesday,
@@ -170,20 +173,28 @@ await waiterSchedule.colorChange()
         thursday,
         friday,
         saterday,
-        sunday
+        sunday,
+        color
     })
 })
 
 app.get('/resets', async function (req, res) {
 
-await waiterSchedule.reset()
+    await waiterSchedule.reset()
 
-req.flash('sukuna','You have cleared your schedule')
+    req.flash('sukuna', 'You have cleared your schedule')
 
     res.render('schedule')
 })
 
+app.get('/logout', async function (req, res) {
 
+    delete req.session.codex
+
+    // req.flash('sukuna', 'Thanks for using Zeenat app')
+
+    res.render('index')
+})
 
 const PORT = process.env.PORT || 3001;
 
