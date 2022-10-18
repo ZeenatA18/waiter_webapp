@@ -50,21 +50,31 @@ app.use(flash());
 app.get('/', async function (req, res) {
 
     res.render('index', {
-
+codex:req.session.codex
     })
 })
 
 app.post('/register', async function (req, res) {
-    let user = req.body.uname
-    console.log(user)
+    let user = req.body.uname.charAt(0).toUpperCase() + req.body.uname.slice(1).toLowerCase();
+    let alphabet = /^[a-z A-Z]+$/
     let results = await waiterSchedule.duplicate(user)
 
-    if (results.length === 0) {
+ 
+    if (results.length !== 0){
+        req.flash('sukuna', 'Username already exists');
+    }
+    else if(alphabet.test(user) == false){
+        req.flash('sukuna', 'Please use Alphabets only')
+    }
+
+
+   else if (results.length === 0) {
         let password = uid();
         req.flash('sukuna', "Hi, here is you code to login__" + password)
         await waiterSchedule.storedNames(user, password)
 
-    }else {req.flash('sukuna', 'Username already exists');}
+    }
+    // else {req.flash('sukuna', 'Username already exists');}
 
     res.redirect('back')
 
@@ -72,26 +82,50 @@ app.post('/register', async function (req, res) {
 
 app.post('/login', async function (req, res) {
     let user = req.body.uname
-
-    var username = await waiterSchedule.greet(user)
+let code = req.body.psw
+console.log(code);
+var username = await waiterSchedule.greet(user)
+var codex = await waiterSchedule.code(code)
+console.log(codex);
     // console.log(username)
     var name = username.waiters
 
     if(!username){
         req.flash('sukuna', 'Please register first')
-    }else{
-
+    }else if (username, codex){
+req.session.codex = codex
         res.redirect(`waiters/${name}`)
     }
 
 
 })
 
+app.post('/login_admin', async function (req, res) {
+    let user = req.body.uname
+
+    var username = await waiterSchedule.greet(user)
+    // console.log(username)
+    // var name = username.waiters
+
+    if(!username){
+        req.flash('sukuna', 'Please register first')
+    }
+
+    res.redirect('/days')
+
+
+})
+
 app.get('/waiters/:uname', async function (req, res) {
     let username = req.params.uname
+    let user = await waiterSchedule.getUserId(username)
+    // console.log("uygf",user)
+    let checked = await waiterSchedule.checkedDays(user.id)
+    console.log(checked);
 
     res.render('days', {
-        uname: username
+        uname: username,
+        checked
     })
 })
 
@@ -114,7 +148,10 @@ app.post('/waiters/:uname', async function (req, res) {
     })
 })
 
-app.post('/schedule/', async function (req, res) {
+
+app.get('/days', async function (req, res) {
+
+
 
  let monday = await waiterSchedule.getUserForDay("Monday")
  let tuesday = await waiterSchedule.getUserForDay("Tuesday")
@@ -124,8 +161,7 @@ app.post('/schedule/', async function (req, res) {
  let saterday = await waiterSchedule.getUserForDay("Saterday")
  let sunday = await waiterSchedule.getUserForDay("Sunday")
 
-
-
+await waiterSchedule.colorChange()
  
     res.render('schedule', {
         monday,

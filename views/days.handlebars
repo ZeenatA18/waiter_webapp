@@ -15,11 +15,11 @@
         <h2 style="text-align: center;">Select three days you available:</h2>
         <form action="/waiters/{{uname}}" method="post" id="myform">
 
-            <div class="wdays">
+            <div class="wdays" id="id">
 
                 <div class="checkbox-animate">
                     <label>
-                        <input type="checkbox" name="weekdays" value="Monday">
+                        <input type="checkbox" name="weekdays" value="Monday" {{#if checked.[0]}}checked{{/if}}>
                         <span class="input-check"></span>
                         Monday
                     </label>
@@ -27,7 +27,7 @@
 
                 <div class="checkbox-animate">
                     <label>
-                        <input type="checkbox" name="weekdays" value="Tuesday">
+                        <input type="checkbox" name="weekdays" value="Tuesday" {{#if checked.[1]}}checked{{/if}}>
                         <span class="input-check"></span>
                         Tuesday
                     </label>
@@ -35,7 +35,7 @@
 
                 <div class="checkbox-animate">
                     <label>
-                        <input type="checkbox" name="weekdays" value="Wednesday">
+                        <input type="checkbox" name="weekdays" value="Wednesday" {{#if checked.[2]}}checked{{/if}}>
                         <span class="input-check"></span>
                         Wednesday
                     </label>
@@ -43,7 +43,7 @@
 
                 <div class="checkbox-animate">
                     <label>
-                        <input type="checkbox" name="weekdays" value="Thursday">
+                        <input type="checkbox" name="weekdays" value="Thursday" {{#if checked.[3]}}checked{{/if}}>
                         <span class="input-check"></span>
                         Thursday
                     </label>
@@ -51,7 +51,7 @@
 
                 <div class="checkbox-animate">
                     <label>
-                        <input type="checkbox" name="weekdays" value="Friday">
+                        <input type="checkbox" name="weekdays" value="Friday" {{#if checked.[4]}}checked{{/if}}>
                         <span class="input-check"></span>
                         Friday
                     </label>
@@ -59,7 +59,7 @@
 
                 <div class="checkbox-animate">
                     <label>
-                        <input type="checkbox" name="weekdays" value="Saterday">
+                        <input type="checkbox" name="weekdays" value="Saterday" {{#if checked.[5]}}checked{{/if}}>
                         <span class="input-check"></span>
                         Saterday
                     </label>
@@ -67,7 +67,7 @@
 
                 <div class="checkbox-animate">
                     <label>
-                        <input type="checkbox" name="weekdays" value="Sunday">
+                        <input type="checkbox" name="weekdays" value="Sunday" {{#if checked.[6]}}checked{{/if}}>
                         <span class="input-check"></span>
                         Sunday
                     </label>
@@ -80,27 +80,19 @@
         </form>
         <div class="codeMsg">{{messages.success}}</div>
 
-   
-    <form action="/schedule" method="post">
-        <button type="submit" style="width: 50%; margin-left:25%; border-radius: 20%;">Schedule</button>
-    </form>
- </div>
- 
-<script>
-$('#myform').validate({
-    rules: {
-        weekdays: {
-            required: true,
-            minlength: 3
-        }
-    },
-    messages: {
-        weekdays: {
-            minlength: "check at least {0}"
-        }
-    }
-});
-</script>
+        <button type="submit" style="margin-left: 25% ;"> <a href="/" class="link"> Logout </a> </button>
+
+
+    </div>
+
+    <script>
+        //var checked = document.getElementsByClassName('checky');
+
+        setTimeout(function () {
+            document.querySelector(".codeMsg").innerHTML = ""
+        }, 5000);
+
+    </script>
 
 </body>
 

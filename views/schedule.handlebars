@@ -14,7 +14,7 @@
   <form action="/days" method="post"></form>
 
   <ul class="weekdays">
-    <li>Monday</li>
+    <li class="{{color}}">Monday</li>
     <li>Tuesday</li>
     <li>Wednesday</li>
     <li>Thursday</li>
@@ -24,51 +24,71 @@
   </ul>
 
   <ul class="days">
-    <li>
+    <li id="addColor">
       {{#each monday}}
-     <br> {{waiters}} <br>
+      <br> {{waiters}} <br>
       {{/each}}
     </li>
     <li>
       {{#each tuesday}}
-     <br> {{waiters}} <br>
+      <br> {{waiters}} <br>
       {{/each}}
     </li>
     <li>
       {{#each wednesday}}
-     <br> {{waiters}} <br>
+      <br> {{waiters}} <br>
       {{/each}}
     </li>
     <li>
       {{#each thursday}}
-     <br> {{waiters}} <br>
+      <br> {{waiters}} <br>
       {{/each}}
     </li>
     <li>
       {{#each friday}}
-     <br> {{waiters}} <br>
+      <br> {{waiters}} <br>
       {{/each}}
     </li>
     <li>
       {{#each saterday}}
-     <br> {{waiters}} <br>
+      <br> {{waiters}} <br>
       {{/each}}
     </li>
     <li>
       {{#each sunday}}
-     <br> {{waiters}} <br>
+      <br> {{waiters}} <br>
       {{/each}}
     </li>
 
   </ul>
 
-    <button type="submit" style="margin-left: 25% ;"> <a href="/" class="link"> Logout </a>  </button>
+  <button type="submit" style="margin-left: 25% ;"> <a href="/" class="link"> Logout </a> </button>
 
-    <button type="submit" style="margin-left: 25% ;"> <a href="/resets" class="link"> Clear </a>  </button>
- 
+  <button type="submit" style="margin-left: 25% ;"> <a href="/resets" class="link"> Clear </a> </button>
+
   {{#if messages.sukuna}}
-    <div class="codeMsg">{{messages.sukuna}}</div>
-    {{/if}}
+  <div class="codeMsg">{{messages.sukuna}}</div>
+  {{/if}}
+
+  <script>
+
+    setTimeout(function () {
+      document.querySelector(".codeMsg").innerHTML = ""
+    }, 5000);
+
+    const addColor = document.querySelector("#addColor");
+
+    var add = addColor.length
+
+    if (add >= 2) {
+      // adding the danger class will make the text red
+      addColor.classList.add("danger");
+    }
+    else if (add >= 1) {
+      addColor.classList.add("warning");
+    }
+    
+  </script>
 
 </body>
 
