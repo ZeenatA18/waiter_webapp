@@ -110,7 +110,35 @@ module.exports = function Waiter(db) {
 
     }
 
+    async function dlte_monday(){
+        let db_results = await db.none('Delete from schedule where weekday_id = 15 ')
+    }
 
+    async function dlte_tuesday(){
+        let db_results = await db.none('Delete from schedule where weekday_id = 16')
+      
+    }
+
+    async function dlte_wednesday(){
+        let db_results = await db.none('Delete from schedule where weekday_id = 17')
+    }
+
+    async function dlte_thursday(){
+        let db_results = await db.none('Delete from schedule where weekday_id = 18')
+    }
+
+    async function dlte_friday(){
+        let db_results = await db.none('Delete from schedule where weekday_id = 19')
+    }
+
+    async function dlte_saturday(){
+        let db_results = await db.none('Delete from schedule where weekday_id = 20')
+    }
+
+    async function dlte_sunday(){
+        let db_results = await db.none('Delete from schedule where weekday_id = 21')
+     
+    }
 
 
     return {
@@ -124,6 +152,7 @@ module.exports = function Waiter(db) {
         checkedDays,
         getUserId,
         code,
-        colorChange
+        colorChange,
+        dlte_monday, dlte_tuesday, dlte_wednesday, dlte_thursday, dlte_friday, dlte_saturday, dlte_sunday
     }
 }

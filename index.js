@@ -124,7 +124,7 @@ app.get('/waiters/:uname', async function (req, res) {
     let user = await waiterSchedule.getUserId(username)
     // console.log("uygf",user)
     let checked = await waiterSchedule.checkedDays(user.id)
-    // console.log(checked);
+    console.log(checked);
 
     res.render('days', {
         uname: username,
@@ -146,15 +146,11 @@ app.post('/waiters/:uname', async function (req, res) {
     }
 
 
-    res.render('days', {
-        uname: username
-    })
+    res.redirect("back")
 })
 
 
 app.get('/days', async function (req, res) {
-
-
 
     let monday = await waiterSchedule.getUserForDay("Monday")
     let tuesday = await waiterSchedule.getUserForDay("Tuesday")
@@ -166,6 +162,9 @@ app.get('/days', async function (req, res) {
 
     let color = await waiterSchedule.colorChange()
     // console.log(color);
+
+
+
     res.render('schedule', {
         monday,
         tuesday,
@@ -178,13 +177,30 @@ app.get('/days', async function (req, res) {
     })
 })
 
-app.get('/resets', async function (req, res) {
+app.get('/resets/:waiterday', async function (req, res) {
 
-    await waiterSchedule.reset()
+    const waiterday = req.params.waiterday
+    if(waiterday == "monday"){
+        await waiterSchedule.dlte_monday()
+    }else if(waiterday == "tuesday"){
+        await waiterSchedule.dlte_tuesday()
+    }else if(waiterday == "wednesday"){
+        await waiterSchedule.dlte_wednesday()
+    }else if(waiterday == "thursday"){
+        await waiterSchedule.dlte_thursday()
+    }else if(waiterday == "friday"){
+        await waiterSchedule.dlte_friday()
+    }else if(waiterday == "saturday"){
+        await waiterSchedule.dlte_saturday()
+    }else if(waiterday == "sunday"){
+        await waiterSchedule.dlte_sunday()
+    } else if (waiterday == "all"){
+        await waiterSchedule.reset()  
+    }
 
-    req.flash('sukuna', 'You have cleared your schedule')
-
-    res.render('schedule')
+    // await waiterSchedule.reset()
+    req.flash('sukuna', 'Reseted')
+    res.redirect("back")
 })
 
 app.get('/logout', async function (req, res) {

@@ -19,7 +19,7 @@ CREATE TABLE schedule(
      foreign key (weekday_id) references weekday_key(id)
 );
 
-insert into weekday_key (weekdays) values ('Monday'), ('Tuesday'), ('Wednesday'), ('Thursday'), ('Friday'), ('Saterday'), ('Sunday');
+insert into weekday_key (weekdays) values ('Monday'), ('Tuesday'), ('Wednesday'), ('Thursday'), ('Friday'), ('Saturday'), ('Sunday');
 
 
 
