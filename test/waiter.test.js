@@ -18,24 +18,32 @@ describe("Coffee shop schedule", function () {
         // // console.log(all)
     });
 
-
     it("Should return the name that is entered", async function () {
         const waiterz = waitersff(db)
 
-        await waiterz.storedNames('Zeenat')
+        await waiterz.storedNames('Zeenat','aayBrUj5Px')
        
 
-        assert.deepEqual([ {"waiters": "Zeenat"}], await waiterz.getName());
+        assert.deepEqual([{"waiters":"Zeenat"}], await waiterz.getName());
 
     })
 
     it("Should return nothing from the database when you reset", async function () {
         const waiterz = waitersff(db)
 
-        await waiterz.storedNames('Zeenat');
         await waiterz.reset()
 
         assert.deepEqual([], await waiterz.getName());
+
+    })
+
+    it("Should return nothing from the database when you reset", async function () {
+        const waiterz = waitersff(db)
+
+        await waiterz.storedNames('Zeenat','aayBrUj5Px')
+        await waiterz.code('aayBrUj5Px');
+
+        assert.deepEqual([{"waiters":"Zeenat"}], await waiterz.getName());
 
     })
 

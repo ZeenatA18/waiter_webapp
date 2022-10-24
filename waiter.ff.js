@@ -14,10 +14,10 @@ module.exports = function Waiter(db) {
 
     }
 
-    async function duplicate(waiter) {
-        let db_results = await db.any('SELECT waiters FROM waiters_key WHERE waiters = $1', [waiter]);
-        return db_results;
-    }
+    // async function duplicate(waiter) {
+    //     let db_results = await db.any('SELECT waiters FROM waiters_key WHERE waiters = $1', [waiter]);
+    //     return db_results;
+    // }
 
     async function greet(personName) {
 
@@ -147,7 +147,7 @@ module.exports = function Waiter(db) {
         reset,
         greet,
         schedule,
-        duplicate,
+        // duplicate,
         getUserForDay,
         checkedDays,
         getUserId,
