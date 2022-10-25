@@ -142,6 +142,7 @@ app.post('/waiters/:uname', async function (req, res) {
 
     if (available_days && username) {
         await waiterSchedule.schedule(username, available_days)
+
         req.flash('success', "Your available days has been saved.")
     }
 
