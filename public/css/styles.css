@@ -243,7 +243,7 @@ ul {
 }
 
 .schedule_content{
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .days {
@@ -259,7 +259,7 @@ ul {
   background: white;
   margin: 2.5px;
   margin-top: 10px;
-  height: 20%;
+  height: 30%;
   text-align: center;
   margin-bottom: 5px;
   font-size: 12px;
