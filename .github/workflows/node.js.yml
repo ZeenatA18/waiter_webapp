@@ -50,9 +50,8 @@ jobs:
     - run: npm install -g npm
     - run: npm install
     - run: |
-        PGPASSWORD=pg123 psql -h localhost -U postgres -d coffe_shop_test -a -f ./table.sql
+        PGPASSWORD=pg123 psql -h localhost -U postgres -d coffe_shop_test -a -f table.sql
     - run: npm run build --if-present
     - run: npm test
     env: 
       DATABASE_URL: postgresql://postgres:pg123@localhost:5432/coffe_shop_test
-Footer
