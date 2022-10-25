@@ -73,7 +73,7 @@ describe("Coffee shop schedule", function () {
         await waiterz.schedule('Zeenat', [])
 
         let inner = await waiterz.checkedDays()
-        console.log(inner);
+      
         assert.deepEqual(  [
                false,
                false,
@@ -85,34 +85,6 @@ describe("Coffee shop schedule", function () {
              ], inner);
 
     })
-
-    // it("Should return ", async function () {
-    //     const waiterz = waitersff(db)
-        
-    //     await waiterz.storedNames('Zeenat', 'aayBrUj5Px')
-    //     await waiterz.storedNames('Siphokazi', '6icfUetrc2')
-    //     await waiterz.storedNames('Funny', 'qPJCYU7QBm')
-        
-    //     await waiterz.schedule('Zeenat', ['Wednesday'])
-    //     await waiterz.schedule('Funny', ['Wednesday'])
-    //     await waiterz.schedule('Siphokazi', ['Wednesday'])
-        
-    //     let amountOfWaiters = await waiterz.colorChange()
-    //     console.log(amountOfWaiters);
-    //     assert.equal(
-    //         [
-    //         { id: 1, weekdays: 'Monday', color: 'warning' },
-    //         { id: 2, weekdays: 'Tuesday', color: 'warning' },
-    //         { id: 3, weekdays: 'Wednesday', color: 'good' },
-    //         { id: 4, weekdays: 'Thursday', color: 'warning' },
-    //         { id: 5, weekdays: 'Friday', color: 'warning' },
-    //         { id: 6, weekdays: 'Saturday', color: 'warning' },
-    //         { id: 7, weekdays: 'Sunday', color: 'warning' }
-    //       ]
-    //       , amountOfWaiters);
-        
-        
-    // })
 
     it("Should return nothing from the database when you reset", async function () {
         const waiterz = waitersff(db)
