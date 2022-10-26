@@ -66,7 +66,7 @@ describe("Coffee shop schedule", function () {
         
     })
     
-    it("Should return the amount of waiters working for monday ", async function () {
+    it("Should check if the waiter has check any days", async function () {
         const waiterz = waitersff(db)
 
         await waiterz.storedNames('Zeenat', 'aayBrUj5Px')
