@@ -124,20 +124,9 @@ module.exports = function routesWaiter(waiterSchedule) {
     async function deleteWorkersOnDay(req, res) {
 
         const waiterday = req.params.waiterday
-        if(waiterday == "monday"){
-            await waiterSchedule.dlte_monday()
-        }else if(waiterday == "tuesday"){
-            await waiterSchedule.dlte_tuesday()
-        }else if(waiterday == "wednesday"){
-            await waiterSchedule.dlte_wednesday()
-        }else if(waiterday == "thursday"){
-            await waiterSchedule.dlte_thursday()
-        }else if(waiterday == "friday"){
-            await waiterSchedule.dlte_friday()
-        }else if(waiterday == "saturday"){
-            await waiterSchedule.dlte_saturday()
-        }else if(waiterday == "sunday"){
-            await waiterSchedule.dlte_sunday()
+        if(waiterday != "all"){
+            await waiterSchedule.dlte_day(waiterday)
+
         } else if (waiterday == "all"){
             await waiterSchedule.reset()  
         }
