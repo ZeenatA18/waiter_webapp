@@ -86,6 +86,26 @@ describe("Coffee shop schedule", function () {
 
     })
 
+    it("Should check if the waiter has check any days", async function () {
+        const waiterz = waitersff(db)
+
+        await waiterz.storedNames('Zeenat', 'aayBrUj5Px')
+        await waiterz.schedule('Zeenat', ['Wednesday'])
+
+        let inner = await waiterz.colorChange()
+        // console.log(inner);
+        let colorWednesday = inner.find(weekday => {
+            if(weekday.id == 3) {
+                return weekday
+            }
+        })
+        // console.log(colorWednesday);
+      
+        assert.deepEqual('warning', colorWednesday.color);
+
+    })
+
+
     it("Should return nothing from the database when you reset", async function () {
         const waiterz = waitersff(db)
 

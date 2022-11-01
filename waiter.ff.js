@@ -112,6 +112,11 @@ module.exports = function Waiter(db) {
         return db_results
     }
 
+    async function admin(code){
+        let db_results = await db.oneOrNone("select * from waiters_key where waiters = 'Admin' and password = $1", [code])
+        return db_results != null
+    }
+
 
     return {
         storedNames,
@@ -125,6 +130,7 @@ module.exports = function Waiter(db) {
         getUserId,
         code,
         colorChange,
-        dlte_day
+        dlte_day,
+        admin
     }
 }
