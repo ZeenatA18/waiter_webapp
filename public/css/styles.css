@@ -4,8 +4,7 @@ body {
 }
 
 .clear_button{
-  transform: translateY(310%); 
-  display:flex"
+  margin: auto auto 5px auto;
 }
 
 .navbar{
@@ -302,13 +301,15 @@ ul {
 }
 
 .days li {
+  display: flex;
+  flex-direction: column;
   list-style-type: none;
   float: left;
   width: 13.6%;
   background: white;
   margin: 2.5px;
   margin-top: 10px;
-  height: 30%;
+  min-height: 30%;
   text-align: center;
   margin-bottom: 5px;
   font-size: 12px;
