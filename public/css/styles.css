@@ -3,6 +3,43 @@ body {
   background-image: url(good.jpg);
 }
 
+.navbar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #264653;
+  position: sticky;
+  top: 0;
+}
+
+.navbar ul{
+  display: flex;
+  list-style: none;
+  margin: 20px 0px;
+}
+
+.navbar ul li{
+  font-family: century;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-left: 60em;
+  color: white;
+}
+
+.navbar ul li {
+  text-decoration: none;
+  /* color: rgb(15, 116, 96); */
+  padding: 8px 10px;
+  transition: all .5s ease;
+}
+
+.navbar ul li:hover{
+  background-color: #40b78c;
+  color: black;
+  box-shadow: 0 0 20px white;
+}
+
+
 .title {
   text-align: center;
 }
@@ -33,7 +70,7 @@ button {
   background-color: #40b78c;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
+  margin: 30px 0;
   border: none;
   cursor: pointer;
   width: 40%;
@@ -121,7 +158,7 @@ button:hover {
   /* padding: 10px; */
   margin-left: 30%;
 }
-
+/* 
 .navbar {
   display: flex;
   justify-content: center;
@@ -154,7 +191,7 @@ button:hover {
   background-color: white;
   color: black;
   box-shadow: 0 0 10px white;
-}
+} */
 
 .dvd {
   /* display: none; Hidden by default */
