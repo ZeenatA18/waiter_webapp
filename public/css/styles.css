@@ -5,7 +5,7 @@ body {
 
 .clear_button{
   transform: translateY(310%); 
-  display:inline-block"
+  display:flex"
 }
 
 .navbar{
