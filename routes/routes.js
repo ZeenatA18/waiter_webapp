@@ -84,7 +84,7 @@ module.exports = function routesWaiter(waiterSchedule) {
     }
 
     async function login_admin(req, res) {
-        // let user = req.body.uname.charAt(0).toUpperCase() + req.body.uname.slice(1).toLowerCase();
+        req.body.uname.charAt(0).toUpperCase() + req.body.uname.slice(1).toLowerCase();
         let code = req.body.psw
 // 
 

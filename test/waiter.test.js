@@ -26,6 +26,16 @@ describe("Coffee shop schedule", function () {
 
     })
 
+    it("Should return false if the person is not the admin", async function () {
+        const waiterz = waitersff(db)
+
+        await waiterz.storedNames('Zeenat', 'aayBrUj5Px')
+
+
+        assert.deepEqual( false, await waiterz.admin());
+
+    })
+
     it("Should return the code for the user from the database", async function () {
         const waiterz = waitersff(db)
 
@@ -86,7 +96,7 @@ describe("Coffee shop schedule", function () {
 
     })
 
-    it("Should check if the waiter has check any days", async function () {
+    it("Should return warning if the waiters is less then 3 for Wednesday", async function () {
         const waiterz = waitersff(db)
 
         await waiterz.storedNames('Zeenat', 'aayBrUj5Px')
@@ -105,6 +115,55 @@ describe("Coffee shop schedule", function () {
 
     })
 
+    it("Should return accepted if the waiters is equal to 3 for Monday", async function () {
+        const waiterz = waitersff(db)
+
+        await waiterz.storedNames('Zeenat', 'aayBrUj5Px')
+        await waiterz.storedNames('Siphokazi', '6icfUetrc2')
+        await waiterz.storedNames('Funny', 'qPJCYU7QBm')
+        
+        await waiterz.schedule('Zeenat', ['Monday'])
+        await waiterz.schedule('Funny', ['Monday'])
+        await waiterz.schedule('Siphokazi', ['Monday'])
+
+        let inner = await waiterz.colorChange()
+        // console.log(inner);
+        let colorMonday = inner.find(weekday => {
+            if(weekday.id == 1) {
+                return weekday
+            }
+        })
+        // console.log(colorWednesday);
+      
+        assert.deepEqual('good', colorMonday.color);
+
+    })
+
+    it("Should return danger if the waiters is more then 3 for Friday", async function () {
+        const waiterz = waitersff(db)
+
+        await waiterz.storedNames('Zeenat', 'aayBrUj5Px')
+        await waiterz.storedNames('Siphokazi', '6icfUetrc2')
+        await waiterz.storedNames('Funny', 'qPJCYU7QBm')
+        await waiterz.storedNames('Cindy', 'cH1mqW24xz')
+        
+        await waiterz.schedule('Zeenat', ['Friday'])
+        await waiterz.schedule('Funny', ['Friday'])
+        await waiterz.schedule('Siphokazi', ['Friday'])
+        await waiterz.schedule('Cindy', ['Friday'])
+
+        let inner = await waiterz.colorChange()
+        // console.log(inner);
+        let colorMonday = inner.find(weekday => {
+            if(weekday.id == 5) {
+                return weekday
+            }
+        })
+        // console.log(colorWednesday);
+      
+        assert.deepEqual('danger', colorMonday.color);
+
+    })
 
     it("Should return nothing from the database when you reset", async function () {
         const waiterz = waitersff(db)
