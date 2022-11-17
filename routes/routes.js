@@ -62,7 +62,7 @@ module.exports = function routesWaiter(waiterSchedule) {
         let user = await waiterSchedule.getUserId(username)
         // console.log("uygf",user)
         let checked = await waiterSchedule.checkedDays(user.id)
-        console.log(checked);
+        // console.log(checked);
 
         res.render('days', {
             uname: username,
